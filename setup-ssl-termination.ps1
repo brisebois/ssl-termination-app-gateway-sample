@@ -20,14 +20,16 @@ Export-PfxCertificate -FilePath $CertFileFullPath -Password $SecurePassword -Cer
 
 # setup via cloud shell
 
-$GateWayName = 'albrisebwaf'
-$RgName = 'delete-waf'
+$GateWayName = 'delete-waf'
+$RgName = 'delete'
 
 $backendIpAddress = '10.1.0.4'
 
 # setup frontend port
 
-$gateway =  Get-AzureRmApplicationGateway -Name $GateWayName -ResourceGroupName $RgName
+$gateway =  Get-AzureRmApplicationGateway `
+                -Name $GateWayName `
+                -ResourceGroupName $RgName
 
 $gateway = Add-AzureRmApplicationGatewayFrontendPort `
     -Name 'AlexandrebriseboisFrontendPort' `
