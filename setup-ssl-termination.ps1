@@ -1,20 +1,20 @@
 # credentialing
 
-$CertPassword     = 'alex123'
+$CertPassword    ='alex123'
 
 $DnsNames         = "*.delete.me", "*.scm.delete.me"
-$CertFileFullPath = "C:\temp\delete.me.pfx"
-$SecurePassword   = ConvertTo-SecureString -String $CertPassword -AsPlainText -Force
-$NewCert          = New-SelfSignedCertificate -CertStoreLocation Cert:\CurrentUser\My -DnsName $DnsNames 
+$CertFileFullPath = "C:\temp\delete.me.pfx"
+$SecurePassword   = ConvertTo-SecureString -String $CertPassword -AsPlainText -Force
+$NewCert          = New-SelfSignedCertificate -CertStoreLocation Cert:\CurrentUser\My -DnsName $DnsNames 
 
-Export-PfxCertificate -FilePath $CertFileFullPath -Password $SecurePassword -Cert $NewCert  
+Export-PfxCertificate -FilePath $CertFileFullPath -Password $SecurePassword -Cert $NewCert  
 
 $DnsNames         = "*.alexandrebrisebois.com"
-$CertFileFullPath = "C:\temp\alexandrebrisebois.com.pfx"
-$SecurePassword   = ConvertTo-SecureString -String $CertPassword -AsPlainText -Force
-$NewCert          = New-SelfSignedCertificate -CertStoreLocation Cert:\CurrentUser\My -DnsName $DnsNames 
+$CertFileFullPath = "C:\temp\alexandrebrisebois.com.pfx"
+$SecurePassword   =ConvertTo-SecureString -String $CertPassword -AsPlainText -Force
+$NewCert          = New-SelfSignedCertificate -CertStoreLocation Cert:\CurrentUser\My -DnsName $DnsNames 
 
-Export-PfxCertificate -FilePath $CertFileFullPath -Password $SecurePassword -Cert $NewCert  
+Export-PfxCertificate -FilePath $CertFileFullPath -Password $SecurePassword -Cert $NewCert  
 
 # $(Get-AzureRmApplicationGateway -Name 'albriseb' -ResourceGroupName 'delete').ProvisioningState
 
