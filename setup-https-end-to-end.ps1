@@ -22,7 +22,7 @@ $probe = Get-AzureRmApplicationGatewayProbeConfig `
             -Name 'HttpsProbe' `
             -ApplicationGateway $gateway
 
-# $cert = Get-AzureRmApplicationGatewaySslCertificate -Name 'AlexandrebriseboisComAppGwCert' -ApplicationGateway $gateway
+$cert = Get-AzureRmApplicationGatewaySslCertificate -Name 'AlexandrebriseboisComAppGwCert' -ApplicationGateway $gateway
 
 $gateway = Add-AzureRmApplicationGatewayBackendHttpSettings `
         -Name 'AlexandrebriseboisHttpsSettings' `
@@ -30,7 +30,7 @@ $gateway = Add-AzureRmApplicationGatewayBackendHttpSettings `
         -Protocol Https `
         -Path '/' `
         -RequestTimeout 120 `
-       # -AuthenticationCertificates $cert `
+        -AuthenticationCertificates $cert `
         -HostName 'www.alexandrebrisebois.com' `
         -Probe $probe `
         -CookieBasedAffinity Disabled `
