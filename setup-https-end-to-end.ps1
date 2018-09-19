@@ -22,7 +22,12 @@ $probe = Get-AzureRmApplicationGatewayProbeConfig `
             -Name 'HttpsProbe' `
             -ApplicationGateway $gateway
 
-$cert = Get-AzureRmApplicationGatewaySslCertificate -Name 'AlexandrebriseboisComAppGwCert' -ApplicationGateway $gateway
+$gateway = Add-AzureRmApplicationGatewayAuthenticationCertificate `
+            -Name "AlexandrebriseboisComAppGwAuthCert" `
+            -CertificateFile '' `
+            -ApplicationGateway $gateway
+
+$cert = Get-AzureRmApplicationGatewayAuthenticationCertificate -Name 'AlexandrebriseboisComAppGwAuthCert' -ApplicationGateway $gateway
 
 $gateway = Add-AzureRmApplicationGatewayBackendHttpSettings `
         -Name 'AlexandrebriseboisHttpsSettings' `
