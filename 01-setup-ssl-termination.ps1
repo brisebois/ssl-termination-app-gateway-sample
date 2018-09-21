@@ -8,13 +8,15 @@ $SecurePassword   = ConvertTo-SecureString -String $CertPassword -AsPlainText -F
 $NewCert          = New-SelfSignedCertificate -CertStoreLocation Cert:\CurrentUser\My -DnsName $DnsNames 
 
 Export-PfxCertificate -FilePath $CertFileFullPath -Password $SecurePassword -Cert $NewCert  
+Export-Certificate -FilePath "C:\temp\delete.me.cer" -Cert $NewCert
 
 $DnsNames         = "*.alexandrebrisebois.com"
 $CertFileFullPath = "C:\temp\alexandrebrisebois.com.pfx"
 $SecurePassword   =ConvertTo-SecureString -String $CertPassword -AsPlainText -Force
-$NewCert          = New-SelfSignedCertificate -CertStoreLocation Cert:\CurrentUser\My -DnsName $DnsNames 
+$NewCert          = New-SelfSignedCertificate -CertStoreLocation Cert:\CurrentUser\My -DnsName $DnsNames
 
 Export-PfxCertificate -FilePath $CertFileFullPath -Password $SecurePassword -Cert $NewCert  
+Export-Certificate -FilePath "C:\temp\alexandrebrisebois.com.cer" -Cert $NewCert
 
 # $(Get-AzureRmApplicationGateway -Name 'albriseb' -ResourceGroupName 'delete').ProvisioningState
 
